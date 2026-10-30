@@ -27,15 +27,22 @@
 <body>
   <a class="skip-link" href="#reels">Skip to the work</a>
 
-  <!-- ===================== HEADER ===================== -->
+  <!-- ===================== HEADER =====================
+       Sticky: stays at the top while scrolling. main.js highlights the link
+       for the section you are reading. -->
   <header class="site-header">
-    <a class="brand" href="#top">Lemuel Guballa</a>
-    <nav class="site-nav" aria-label="Main">
-      <a href="#reels">Reels</a>
-      <a href="#workflow">AI workflow</a>
-      <a href="#background">Background</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="site-header__inner">
+      <a class="brand" href="#top" aria-label="Lemuel Guballa, back to top">
+        <span class="brand__full">Lemuel Guballa</span>
+        <span class="brand__short" aria-hidden="true">LG</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="#reels">Reels</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#background">Background</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -54,28 +61,16 @@
           <a class="btn btn--ghost" href="mailto:lemuel.guballa34@gmail.com">Email me</a>
         </div>
 
-        <!-- Decorative editing timeline: the structure of a 30-second ad.
-             Position a clip with style="--start: X; --len: Y" (both are % of the track). -->
-        <div class="timeline" aria-hidden="true">
-          <div class="timeline__ruler">
-            <span>0:00</span><span>0:05</span><span>0:10</span><span>0:15</span>
-            <span>0:20</span><span>0:25</span><span>0:30</span>
-          </div>
-          <div class="timeline__track">
-            <span class="clip clip--hook" style="--start: 0; --len: 12">Hook</span>
-            <span class="clip clip--body" style="--start: 12; --len: 66">Problem and demo</span>
-            <span class="clip clip--cta"  style="--start: 78; --len: 22">Call to action</span>
-          </div>
-          <div class="timeline__track">
-            <span class="clip clip--ai" style="--start: 4;  --len: 20">AI b-roll</span>
-            <span class="clip clip--ai" style="--start: 34; --len: 24">AI product shot</span>
-            <span class="clip clip--ai" style="--start: 66; --len: 14">AI scene</span>
-          </div>
-          <div class="timeline__track">
-            <span class="clip clip--audio" style="--start: 0;  --len: 78">Voiceover and captions</span>
-            <span class="clip clip--audio" style="--start: 78; --len: 22">Music out</span>
-          </div>
-          <div class="timeline__playhead"></div>
+        <!-- SHOWREEL: your best work in one video (wide, 21:9 frame).
+             Fill it the same way as the slots below (see HOW TO FILL A SLOT). -->
+        <div class="hero__reel">
+          <article class="slot slot--cinema">
+            <div class="slot__media">
+              <span class="slot__empty">Showreel coming soon</span>
+            </div>
+            <h2 class="slot__title">Showreel</h2>
+            <p class="slot__meta">Best work, about 60 seconds</p>
+          </article>
         </div>
       </div>
     </section>
@@ -103,9 +98,12 @@
             HOW TO FILL A SLOT
             1. Put your video file in assets/videos/ (MP4, H.264).
             2. Replace the <span class="slot__empty"> line with:
-                 <video src="assets/videos/my-ad.mp4" controls playsinline
-                        preload="metadata" poster="assets/images/my-ad.jpg"></video>
-               Or embed YouTube / Vimeo / Google Drive instead:
+                 <video src="assets/videos/my-ad.mp4" poster="assets/images/my-ad.jpg"
+                        muted loop playsinline preload="metadata"></video>
+               The site adds the rest by itself: the video previews on hover,
+               gets a sound button, and opens in a larger player when clicked.
+               Or embed YouTube / Vimeo / Google Drive instead (opens larger on
+               click, but has no hover preview or sound button):
                  <iframe src="https://www.youtube.com/embed/VIDEO_ID"
                          title="Ad title" allowfullscreen loading="lazy"></iframe>
             3. Edit the title and the line under it.
@@ -168,9 +166,12 @@
             HOW TO FILL A SLOT
             1. Put your video file in assets/videos/ (MP4, H.264).
             2. Replace the <span class="slot__empty"> line with:
-                 <video src="assets/videos/my-ad.mp4" controls playsinline
-                        preload="metadata" poster="assets/images/my-ad.jpg"></video>
-               Or embed YouTube / Vimeo / Google Drive instead:
+                 <video src="assets/videos/my-ad.mp4" poster="assets/images/my-ad.jpg"
+                        muted loop playsinline preload="metadata"></video>
+               The site adds the rest by itself: the video previews on hover,
+               gets a sound button, and opens in a larger player when clicked.
+               Or embed YouTube / Vimeo / Google Drive instead (opens larger on
+               click, but has no hover preview or sound button):
                  <iframe src="https://www.youtube.com/embed/VIDEO_ID"
                          title="Ad title" allowfullscreen loading="lazy"></iframe>
             3. Edit the title and the line under it.
@@ -233,9 +234,12 @@
             HOW TO FILL A SLOT
             1. Put your video file in assets/videos/ (MP4, H.264).
             2. Replace the <span class="slot__empty"> line with:
-                 <video src="assets/videos/my-ad.mp4" controls playsinline
-                        preload="metadata" poster="assets/images/my-ad.jpg"></video>
-               Or embed YouTube / Vimeo / Google Drive instead:
+                 <video src="assets/videos/my-ad.mp4" poster="assets/images/my-ad.jpg"
+                        muted loop playsinline preload="metadata"></video>
+               The site adds the rest by itself: the video previews on hover,
+               gets a sound button, and opens in a larger player when clicked.
+               Or embed YouTube / Vimeo / Google Drive instead (opens larger on
+               click, but has no hover preview or sound button):
                  <iframe src="https://www.youtube.com/embed/VIDEO_ID"
                          title="Ad title" allowfullscreen loading="lazy"></iframe>
             3. Edit the title and the line under it.
@@ -282,13 +286,37 @@
     </section>
 
     <!-- ===================== AI WORKFLOW ===================== -->
-    <section class="section theme-light" id="workflow">
+    <section class="section theme-raised" id="workflow">
       <div class="wrap">
         <h2 class="section__title">How I make ads with AI</h2>
         <p class="section__lead">
           AI speeds up the parts of production that used to need a crew. Taste and
           timing still decide whether an ad works, so every cut is finished by hand.
         </p>
+
+        <!-- Decorative editing timeline: the structure of a 30-second ad. It plays once when scrolled into view.
+             Position a clip with style="--start: X; --len: Y" (both are % of the track). -->
+        <div class="timeline" aria-hidden="true">
+          <div class="timeline__ruler">
+            <span>0:00</span><span>0:05</span><span>0:10</span><span>0:15</span>
+            <span>0:20</span><span>0:25</span><span>0:30</span>
+          </div>
+          <div class="timeline__track">
+            <span class="clip clip--hook" style="--start: 0; --len: 12">Hook</span>
+            <span class="clip clip--body" style="--start: 12; --len: 66">Problem and demo</span>
+            <span class="clip clip--cta"  style="--start: 78; --len: 22">Call to action</span>
+          </div>
+          <div class="timeline__track">
+            <span class="clip clip--ai" style="--start: 4;  --len: 20">AI b-roll</span>
+            <span class="clip clip--ai" style="--start: 34; --len: 24">AI product shot</span>
+            <span class="clip clip--ai" style="--start: 66; --len: 14">AI scene</span>
+          </div>
+          <div class="timeline__track">
+            <span class="clip clip--audio" style="--start: 0;  --len: 78">Voiceover and captions</span>
+            <span class="clip clip--audio" style="--start: 78; --len: 22">Music out</span>
+          </div>
+          <div class="timeline__playhead"></div>
+        </div>
 
         <div class="workflow__grid">
           <ol class="steps">
@@ -346,7 +374,7 @@
     </section>
 
     <!-- ===================== BACKGROUND (from the resume) ===================== -->
-    <section class="section theme-light" id="background" style="padding-top: 0;">
+    <section class="section" id="background">
       <div class="wrap">
         <h2 class="section__title">Engineering background</h2>
         <p class="section__lead">
@@ -439,9 +467,9 @@
     </section>
 
     <!-- ===================== CONTACT ===================== -->
-    <section class="section contact" id="contact">
+    <section class="section theme-raised contact" id="contact">
       <div class="wrap">
-        <h2 class="section__title">Have an ad to cut?</h2>
+        <h2 class="section__title section__title--xl">Have an ad to cut?</h2>
         <p class="section__lead">
           I’m open to UGC and AI ad editing roles. Send a brief, a job description or a rough idea.
         </p>
@@ -456,9 +484,23 @@
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
-      © <span id="year">2026</span> Lemuel Derwin Guballa
+    <div class="wrap site-footer__inner">
+      <p>© <span id="year">2026</span> Lemuel Derwin Guballa</p>
+      <a href="#top">Back to top</a>
     </div>
   </footer>
+
+  <!-- ===================== LIGHTBOX =====================
+       The larger player. main.js fills it with the video you click.
+       Escape, the close button, or clicking outside all close it. -->
+  <dialog class="lightbox" id="lightbox" aria-label="Video player">
+    <div class="lightbox__inner">
+      <button class="lightbox__close" type="button" aria-label="Close player">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="lightbox__media" id="lightbox-media"></div>
+      <p class="lightbox__title" id="lightbox-title"></p>
+    </div>
+  </dialog>
 </body>
 </html>
