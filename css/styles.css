@@ -1,0 +1,516 @@
+/* ==========================================================================
+   Portfolio styles: Lemuel Derwin Guballa
+
+   Contents
+   1. Design tokens (colors, fonts)
+   2. Base and layout helpers
+   3. Header
+   4. Hero and editing timeline
+   5. Video rails (the empty slots where your ads go)
+   6. Light sections (workflow, background)
+   7. Contact and footer
+   8. Reduced motion
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Design tokens
+   Change colors here and the whole site updates.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Base palette (dark, taken from the slate tone in your resume sidebar) */
+  --ink: #1e2230;          /* page background */
+  --panel: #282d40;        /* video slot background */
+  --line: #3b415a;         /* borders and dividers on dark */
+  --text: #eceef5;         /* main text on dark */
+  --muted: #a8aebf;        /* secondary text on dark */
+
+  /* Light palette (used by .theme-light sections) */
+  --paper: #f3f4f8;
+  --paper-text: #1e2230;
+  --paper-muted: #515874;
+  --paper-line: #d5d9e6;
+
+  /* Accents: pink is the "playhead" color, periwinkle marks AI work */
+  --playhead: #ff4d8d;
+  --ai: #9aabff;
+
+  /* Fonts (loaded from Google Fonts in index.html, with safe fallbacks) */
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Theme variables: components read these, so a section can switch theme */
+  --bg: var(--ink);
+  --fg: var(--text);
+  --fg-muted: var(--muted);
+  --rule: var(--line);
+  --focus: var(--ai);
+
+  /* Content width */
+  --content-width: 1120px;
+}
+
+/* Add class="theme-light" to a section to flip it to the light palette */
+.theme-light {
+  --bg: var(--paper);
+  --fg: var(--paper-text);
+  --fg-muted: var(--paper-muted);
+  --rule: var(--paper-line);
+  --focus: var(--ink);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Base and layout helpers
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.12;
+}
+
+p { margin: 0; }
+a { color: inherit; }
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Centered content column */
+.wrap {
+  width: min(100% - 2.5rem, var(--content-width));
+  margin-inline: auto;
+}
+
+/* Vertical rhythm between page sections */
+.section {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.section__title {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.section__lead {
+  max-width: 60ch;
+  margin-top: 0.75rem;
+  color: var(--fg-muted);
+}
+
+/* Link for keyboard users to jump past the header */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  padding: 0.6rem 1rem;
+  background: var(--playhead);
+  color: var(--ink);
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 10;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.btn--primary { background: var(--playhead); color: var(--ink); }
+.btn--primary:hover { background: #ff6fa3; }
+.btn--ghost { border-color: var(--rule); color: var(--fg); }
+.btn--ghost:hover { border-color: var(--fg-muted); }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Header
+   -------------------------------------------------------------------------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  width: min(100% - 2.5rem, var(--content-width));
+  margin-inline: auto;
+  padding-block: 1.25rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.site-nav a {
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.site-nav a:hover {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Hero and editing timeline
+   The timeline is decorative: it shows the structure of a short ad
+   (hook, body, call to action) the way an editor sees it.
+   -------------------------------------------------------------------------- */
+.hero {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2.5rem, 6vw, 4rem);
+}
+
+.hero__role {
+  margin-bottom: 1rem;
+  color: var(--playhead);
+  font-weight: 600;
+}
+
+.hero__title {
+  max-width: 20ch;
+  font-size: clamp(2.4rem, 5.6vw, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.hero__lead {
+  max-width: 58ch;
+  margin-top: 1.5rem;
+  color: var(--fg-muted);
+  font-size: 1.15rem;
+}
+
+.timeline {
+  position: relative;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* Timecodes along the top */
+.timeline__ruler {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.timeline__track {
+  position: relative;
+  height: 2.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+/* A clip is placed with two custom properties set in the HTML:
+   --start (where it begins) and --len (how long), both as % of the track */
+.clip {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: calc(var(--start) * 1%);
+  width: calc(var(--len) * 1% - 4px);
+  display: flex;
+  align-items: center;
+  padding-inline: 0.6rem;
+  border-radius: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.clip--hook  { background: var(--playhead); }
+.clip--body  { background: #d9def0; }
+.clip--cta   { background: var(--ai); }
+.clip--ai    { background: rgba(154, 171, 255, 0.18); border: 1px solid var(--ai); color: var(--ai); }
+.clip--audio { background: var(--panel); border: 1px solid var(--line); color: var(--fg-muted); }
+
+/* The playhead sweeps across once on page load, then fades out */
+.timeline__playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--playhead);
+  animation: playhead-sweep 4.5s cubic-bezier(0.45, 0.05, 0.3, 1) 0.4s both;
+}
+/* Small triangle on top of the playhead line */
+.timeline__playhead::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  border: 6px solid transparent;
+  border-top-color: var(--playhead);
+}
+
+@keyframes playhead-sweep {
+  0%   { left: 0;    opacity: 1; }
+  90%  { left: 100%; opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Video rails
+   A rail is a horizontally scrolling row of slots.
+   Each slot is an empty placeholder until you drop a video into it.
+   -------------------------------------------------------------------------- */
+.reels {
+  padding-block: 1rem clamp(3rem, 7vw, 5rem);
+}
+
+.rail-block + .rail-block {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+/* Heading row above each rail, with the left/right buttons */
+.rail-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(100% - 2.5rem, var(--content-width));
+  margin: 0 auto 1.5rem;
+}
+.rail-head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.rail-head p  { max-width: 52ch; margin-top: 0.5rem; color: var(--fg-muted); }
+
+.rail-controls { display: flex; gap: 0.5rem; }
+
+.rail-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+}
+.rail-btn:hover:not(:disabled) { border-color: var(--fg-muted); }
+.rail-btn:disabled { opacity: 0.35; cursor: default; }
+
+/* The scrolling row itself. The side padding lines the first slot up with
+   the page content, while the row still bleeds to the screen edges. */
+.rail {
+  --gutter: max(1.25rem, calc((100% - var(--content-width)) / 2));
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-inline: var(--gutter);
+  padding-bottom: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+/* One video slot. Its width comes from the --slot-w variable below. */
+.slot {
+  flex: 0 0 auto;
+  width: var(--slot-w);
+  scroll-snap-align: start;
+}
+
+/* Slot shapes. Add one of these classes to the <article class="slot"> */
+.slot--vertical { --slot-w: clamp(190px, 22vw, 240px); }  /* 9:16 TikTok, Reels, Shorts */
+.slot--square   { --slot-w: clamp(240px, 30vw, 340px); }  /* 1:1 feed */
+.slot--wide     { --slot-w: clamp(300px, 40vw, 480px); }  /* 16:9 YouTube */
+
+/* The box that holds the video (or the empty placeholder) */
+.slot__media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  overflow: hidden;
+  border: 1.5px dashed var(--rule);
+  border-radius: 14px;
+  background: var(--panel);
+}
+.slot--vertical .slot__media { aspect-ratio: 9 / 16; }
+.slot--square   .slot__media { aspect-ratio: 1 / 1; }
+.slot--wide     .slot__media { aspect-ratio: 16 / 9; }
+
+.slot__empty { color: var(--fg-muted); font-size: 0.9rem; }
+
+/* Anything you place inside a slot fills it completely */
+.slot__media video,
+.slot__media iframe,
+.slot__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+/* Once a video is in, drop the dashed border and the placeholder text */
+.slot__media:has(video, iframe, img) {
+  border-style: solid;
+  border-color: transparent;
+}
+.slot__media:has(video, iframe, img) .slot__empty { display: none; }
+
+.slot__title { margin-top: 0.8rem; font-size: 1.05rem; font-weight: 600; }
+.slot__meta  { margin-top: 0.15rem; color: var(--fg-muted); font-size: 0.9rem; }
+
+
+/* --------------------------------------------------------------------------
+   6. Light sections (workflow, background)
+   -------------------------------------------------------------------------- */
+.workflow__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-top: 2.5rem;
+}
+
+/* The workflow really is a sequence, so these steps are numbered */
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.steps li {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 1rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--rule);
+  counter-increment: step;
+}
+.steps li::before {
+  content: counter(step);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.steps h3 { font-size: 1.15rem; }
+.steps p  { margin-top: 0.25rem; color: var(--fg-muted); }
+
+.tools h3 { font-size: 1.15rem; }
+.tool-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.tool-list li {
+  padding: 0.35rem 0.85rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+.tools p { margin-top: 1.25rem; color: var(--fg-muted); }
+
+/* Background: groups of rows (experience, projects, skills) */
+.group { margin-top: 3rem; }
+.group__title { font-size: 1.4rem; }
+
+.row {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 0.5rem 2rem;
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+.group__title + .row { margin-top: 1rem; }
+.row__label { color: var(--fg-muted); font-size: 0.95rem; }
+.row__body h4 { margin: 0; font-family: var(--font-display); font-size: 1.1rem; }
+.row__body p  { margin-top: 0.3rem; max-width: 66ch; }
+
+
+/* --------------------------------------------------------------------------
+   7. Contact and footer
+   -------------------------------------------------------------------------- */
+.contact__location { margin-top: 1.5rem; color: var(--fg-muted); }
+
+.site-footer {
+  padding-block: 1.5rem 2.5rem;
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Small screens
+   -------------------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .workflow__grid { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; }
+  .clip { font-size: 0.7rem; padding-inline: 0.35rem; }
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Reduced motion
+   Visitors who ask their device for less motion get a still playhead
+   and instant scrolling.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .timeline__playhead { animation: none; left: 18%; }
+}

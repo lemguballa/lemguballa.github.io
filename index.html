@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Page title and description (shown in browser tabs and search results) -->
+  <title>Lemuel Derwin Guballa | UGC and AI ads editor</title>
+  <meta name="description" content="Portfolio of Lemuel Derwin Guballa: UGC and AI-generated video ads, plus the software engineering background behind them.">
+
+  <!-- Link preview when the site is shared (add an og:image once you have a thumbnail) -->
+  <meta property="og:title" content="Lemuel Derwin Guballa | UGC and AI ads editor">
+  <meta property="og:description" content="UGC and AI-generated video ads, edited by a software engineer.">
+  <meta property="og:type" content="website">
+
+  <!-- Tiny inline favicon: a play button on the site's slate color -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231E2230'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='%23FF4D8D'/%3E%3C/svg%3E">
+
+  <!-- Fonts: Bricolage Grotesque (headings), Figtree (text), JetBrains Mono (timecodes) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#reels">Skip to the work</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <a class="brand" href="#top">Lemuel Guballa</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#reels">Reels</a>
+      <a href="#workflow">AI workflow</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <p class="hero__role">UGC and AI ads editor</p>
+        <h1 class="hero__title">Short ads that hold attention from the first second.</h1>
+        <p class="hero__lead">
+          I’m Lemuel, a software engineer turned ad editor. I cut UGC-style videos and
+          AI-generated creatives for vertical feeds, and I use my engineering background
+          to automate the repetitive parts of the edit.
+        </p>
+        <div class="actions">
+          <a class="btn btn--primary" href="#reels">See the reels</a>
+          <a class="btn btn--ghost" href="mailto:lemuel.guballa34@gmail.com">Email me</a>
+        </div>
+
+        <!-- Decorative editing timeline: the structure of a 30-second ad.
+             Position a clip with style="--start: X; --len: Y" (both are % of the track). -->
+        <div class="timeline" aria-hidden="true">
+          <div class="timeline__ruler">
+            <span>0:00</span><span>0:05</span><span>0:10</span><span>0:15</span>
+            <span>0:20</span><span>0:25</span><span>0:30</span>
+          </div>
+          <div class="timeline__track">
+            <span class="clip clip--hook" style="--start: 0; --len: 12">Hook</span>
+            <span class="clip clip--body" style="--start: 12; --len: 66">Problem and demo</span>
+            <span class="clip clip--cta"  style="--start: 78; --len: 22">Call to action</span>
+          </div>
+          <div class="timeline__track">
+            <span class="clip clip--ai" style="--start: 4;  --len: 20">AI b-roll</span>
+            <span class="clip clip--ai" style="--start: 34; --len: 24">AI product shot</span>
+            <span class="clip clip--ai" style="--start: 66; --len: 14">AI scene</span>
+          </div>
+          <div class="timeline__track">
+            <span class="clip clip--audio" style="--start: 0;  --len: 78">Voiceover and captions</span>
+            <span class="clip clip--audio" style="--start: 78; --len: 22">Music out</span>
+          </div>
+          <div class="timeline__playhead"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VIDEO RAILS =====================
+         Three scrollable rows of empty slots, ready for your ads.
+         Each slot has a how-to comment above the first one in each row. -->
+    <section class="reels" id="reels" aria-label="Video work">
+
+      <!-- RAIL 1: UGC ads (vertical 9:16). Replace the placeholder slots with your videos. -->
+      <div class="rail-block">
+        <div class="rail-head">
+          <div>
+            <h2>UGC ads</h2>
+            <p>Creator-style videos cut for vertical feeds: a hook, proof, and a clear call to action.</p>
+          </div>
+          <div class="rail-controls">
+            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll UGC ads left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll UGC ads right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <!-- tabindex="0" lets keyboard users focus the row and scroll it with the arrow keys -->
+        <div class="rail" id="rail-ugc" role="region" aria-label="UGC ads" tabindex="0">
+          <!--
+            HOW TO FILL A SLOT
+            1. Put your video file in assets/videos/ (MP4, H.264).
+            2. Replace the <span class="slot__empty"> line with:
+                 <video src="assets/videos/my-ad.mp4" controls playsinline
+                        preload="metadata" poster="assets/images/my-ad.jpg"></video>
+               Or embed YouTube / Vimeo / Google Drive instead:
+                 <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                         title="Ad title" allowfullscreen loading="lazy"></iframe>
+            3. Edit the title and the line under it.
+            To add more slots, copy a whole <article class="slot ..."> block.
+            To remove one, delete its block.
+          -->
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">UGC ad 1</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">UGC ad 2</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">UGC ad 3</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">UGC ad 4</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">UGC ad 5</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- RAIL 2: AI-generated ads (vertical 9:16). -->
+      <div class="rail-block">
+        <div class="rail-head">
+          <div>
+            <h2>AI-generated ads</h2>
+            <p>Ads built with AI video, image and voice tools, then edited by hand for pace and polish.</p>
+          </div>
+          <div class="rail-controls">
+            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll AI-generated ads left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll AI-generated ads right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <!-- tabindex="0" lets keyboard users focus the row and scroll it with the arrow keys -->
+        <div class="rail" id="rail-ai" role="region" aria-label="AI-generated ads" tabindex="0">
+          <!--
+            HOW TO FILL A SLOT
+            1. Put your video file in assets/videos/ (MP4, H.264).
+            2. Replace the <span class="slot__empty"> line with:
+                 <video src="assets/videos/my-ad.mp4" controls playsinline
+                        preload="metadata" poster="assets/images/my-ad.jpg"></video>
+               Or embed YouTube / Vimeo / Google Drive instead:
+                 <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                         title="Ad title" allowfullscreen loading="lazy"></iframe>
+            3. Edit the title and the line under it.
+            To add more slots, copy a whole <article class="slot ..."> block.
+            To remove one, delete its block.
+          -->
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">AI ad 1</h3>
+            <p class="slot__meta">Tools used, length</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">AI ad 2</h3>
+            <p class="slot__meta">Tools used, length</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">AI ad 3</h3>
+            <p class="slot__meta">Tools used, length</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">AI ad 4</h3>
+            <p class="slot__meta">Tools used, length</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">AI ad 5</h3>
+            <p class="slot__meta">Tools used, length</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- RAIL 3: Alternate formats. Mix of 1:1 (slot--square) and 16:9 (slot--wide). -->
+      <div class="rail-block">
+        <div class="rail-head">
+          <div>
+            <h2>Square and widescreen cuts</h2>
+            <p>1:1 and 16:9 versions of the same ads for feed placements, YouTube and landing pages.</p>
+          </div>
+          <div class="rail-controls">
+            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll Square and widescreen cuts left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll Square and widescreen cuts right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <!-- tabindex="0" lets keyboard users focus the row and scroll it with the arrow keys -->
+        <div class="rail" id="rail-cuts" role="region" aria-label="Square and widescreen cuts" tabindex="0">
+          <!--
+            HOW TO FILL A SLOT
+            1. Put your video file in assets/videos/ (MP4, H.264).
+            2. Replace the <span class="slot__empty"> line with:
+                 <video src="assets/videos/my-ad.mp4" controls playsinline
+                        preload="metadata" poster="assets/images/my-ad.jpg"></video>
+               Or embed YouTube / Vimeo / Google Drive instead:
+                 <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                         title="Ad title" allowfullscreen loading="lazy"></iframe>
+            3. Edit the title and the line under it.
+            To add more slots, copy a whole <article class="slot ..."> block.
+            To remove one, delete its block.
+          -->
+          <article class="slot slot--square">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">Square cut 1</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--square">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">Square cut 2</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--wide">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">Widescreen cut 1</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--wide">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">Widescreen cut 2</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--square">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">Square cut 3</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AI WORKFLOW ===================== -->
+    <section class="section theme-light" id="workflow">
+      <div class="wrap">
+        <h2 class="section__title">How I make ads with AI</h2>
+        <p class="section__lead">
+          AI speeds up the parts of production that used to need a crew. Taste and
+          timing still decide whether an ad works, so every cut is finished by hand.
+        </p>
+
+        <div class="workflow__grid">
+          <ol class="steps">
+            <li>
+              <div>
+                <h3>Start with the offer</h3>
+                <p>Write several hooks for the product, then pick the strongest before opening a timeline.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Script and shot list</h3>
+                <p>Draft scripts and prompts with Gemini or ChatGPT, then rewrite them in a natural, creator-style voice.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Generate what is hard to film</h3>
+                <p>Create AI b-roll, product shots and voiceover for scenes that would be slow or costly to shoot.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Edit for pace</h3>
+                <p>Cut tight, add captions and sound, and make sure the first three seconds earn the next ten.</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Export and test</h3>
+                <p>Deliver 9:16, 1:1 and 16:9 versions with hook variants so the team can test what performs.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="tools">
+            <h3>Tools I use</h3>
+            <!-- EDIT ME: keep only the tools you actually use, and add any that are missing. -->
+            <ul class="tool-list">
+              <li>Gemini</li>
+              <li>ChatGPT</li>
+              <li>CapCut</li>
+              <li>Premiere Pro</li>
+              <li>ElevenLabs</li>
+              <li>Runway</li>
+            </ul>
+            <p>
+              At BEST Systems I built the backend that routes requests between Gemini and
+              OpenAI, so I understand how these models behave in a real product, not only
+              in a prompt box.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== BACKGROUND (from the resume) ===================== -->
+    <section class="section theme-light" id="background" style="padding-top: 0;">
+      <div class="wrap">
+        <h2 class="section__title">Engineering background</h2>
+        <p class="section__lead">
+          Computer Engineering graduate with hands-on backend and frontend experience.
+          I like to learn quickly, work independently, and collaborate well in a team.
+        </p>
+
+        <div class="group">
+          <h3 class="group__title">Experience</h3>
+          <article class="row">
+            <p class="row__label"><time>Nov 2025 – Jul 2026</time></p>
+            <div class="row__body">
+              <h4>Full-stack developer, BEST Systems LLC</h4>
+              <p>
+                Built and maintained backend cloud functions for image uploads, usage
+                tracking and metadata management. Integrated Gemini and OpenAI behind
+                shared model-selection logic for reliable fallbacks, accurate billing
+                and rate-limit protection. Improved reliability with structured logging,
+                robust error handling and atomic Firestore updates.
+              </p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label"><time>Dec 2023 – Dec 2024</time></p>
+            <div class="row__body">
+              <h4>Backend developer, Juice.ai</h4>
+              <p>
+                Developed and maintained backend systems and databases, and helped with
+                frontend tasks when needed.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="group">
+          <h3 class="group__title">Projects</h3>
+          <article class="row">
+            <p class="row__label">2023</p>
+            <div class="row__body">
+              <h4>Personal modular mouse using 3D printing and image processing</h4>
+              <p>Thesis project built in Python. Uses 3D printing and image processing to design a custom ergonomic mouse.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">2022</p>
+            <div class="row__body">
+              <h4>Online clinic patient monitoring program</h4>
+              <p>Built with Dart and Flutter. Supports virtual clinic services and health monitoring.</p>
+            </div>
+          </article>
+          <article class="row">
+            <p class="row__label">2022</p>
+            <div class="row__body">
+              <h4>Patch</h4>
+              <p>Device repair management app built with Dart and Flutter. Streamlines repair requests and tracking.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="group">
+          <h3 class="group__title">Skills</h3>
+          <div class="row">
+            <p class="row__label">Languages</p>
+            <p>JavaScript, TypeScript, Python, C, C++, C#, Java, PHP, Dart</p>
+          </div>
+          <div class="row">
+            <p class="row__label">Frameworks</p>
+            <p>Svelte, Node.js, Flutter</p>
+          </div>
+          <div class="row">
+            <p class="row__label">Tools</p>
+            <p>Supabase, PostgreSQL, Firebase, Docker, Postman, WordPress, Breakdance WP</p>
+          </div>
+          <div class="row">
+            <p class="row__label">AI and cloud</p>
+            <p>Gemini and OpenAI integration, cloud functions, Firestore</p>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3 class="group__title">Education</h3>
+          <article class="row">
+            <p class="row__label">2023</p>
+            <div class="row__body">
+              <h4>BS Computer Engineering, Bulacan State University</h4>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <h2 class="section__title">Have an ad to cut?</h2>
+        <p class="section__lead">
+          I’m open to UGC and AI ad editing roles. Send a brief, a job description or a rough idea.
+        </p>
+        <div class="actions">
+          <a class="btn btn--primary" href="mailto:lemuel.guballa34@gmail.com">lemuel.guballa34@gmail.com</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/lemuel-derwin-guballa-57491b275/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn--ghost" href="https://github.com/lemguballa" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p class="contact__location">Based in Malolos, Bulacan, Philippines.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      © <span id="year">2026</span> Lemuel Derwin Guballa
+    </div>
+  </footer>
+</body>
+</html>
