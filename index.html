@@ -84,7 +84,7 @@
       <div class="rail-block">
         <div class="rail-head">
           <div>
-            <h2>UGC ads</h2>
+            <h2>UGC Ads</h2>
             <p>Creator-style videos cut for vertical feeds: a hook, proof, and a clear call to action.</p>
           </div>
           <div class="rail-controls">
@@ -98,7 +98,7 @@
             HOW TO FILL A SLOT
             1. Put your video file in assets/videos/ (MP4, H.264).
             2. Replace the <span class="slot__empty"> line with:
-                 <video src="assets/videos/my-ad.mp4" poster="assets/images/my-ad.jpg"
+                 <video src="assets/videos/my-ad.mp4"
                         muted loop playsinline preload="metadata"></video>
                The site adds the rest by itself: the video previews on hover,
                gets a sound button, and opens in a larger player when clicked.
@@ -110,6 +110,30 @@
             To add more slots, copy a whole <article class="slot ..."> block.
             To remove one, delete its block.
           -->
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <video src="assets\videos\Serene Herbs Soursop Sumo Wrestler.mp4"
+                        muted loop playsinline preload="metadata"></video>
+            </div>
+            <h3 class="slot__title">Serene Herbs UGC Ad - Sumo Wrestler</h3>
+            <p class="slot__meta">UGC Ad, 2:28s, made for TikTok, Instagram Reels, and YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <video src="assets\videos\Real and Fake Fruits Sumo Wrestler.mp4"
+                        muted loop playsinline preload="metadata"></video>
+            </div>
+            <h3 class="slot__title">Real and Fake Fruits - Sumo Wrestler</h3>
+            <p class="slot__meta">Educational/Informational UGC, 0:55s, made for TikTok, Instagram Reels, and YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <video src="assets\videos\Natural Health Tips - Sumo Wrestler.mp4"
+                        muted loop playsinline preload="metadata"></video>
+            </div>
+            <h3 class="slot__title">Natural Health Tips - Sumo Wrestler</h3>
+            <p class="slot__meta">Educational/Informational UGC, 0:53s, made for TikTok, Instagram Reels, and YouTube Shorts</p>
+          </article>
           <article class="slot slot--vertical">
             <div class="slot__media">
               <video src="assets\videos\travel_accessories_ugc_ad_captioned.mp4"
@@ -120,49 +144,30 @@
           </article>
           <article class="slot slot--vertical">
             <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
+              <video src="assets\videos\serene_herbs_ad_captioned.mp4"
+                        muted loop playsinline preload="metadata"></video>
             </div>
-            <h3 class="slot__title">UGC ad 2</h3>
-            <p class="slot__meta">Brand, length, platform</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">UGC ad 3</h3>
-            <p class="slot__meta">Brand, length, platform</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">UGC ad 4</h3>
-            <p class="slot__meta">Brand, length, platform</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">UGC ad 5</h3>
-            <p class="slot__meta">Brand, length, platform</p>
+            <h3 class="slot__title">Serene Herbs Ad</h3>
+            <p class="slot__meta">Cinematic Product Ad, 0:32s, Amazon</p>
           </article>
         </div>
       </div>
 
-      <!-- RAIL 2: AI-generated ads (vertical 9:16). -->
+
+      <!-- RAIL 2: 16:9 (slot--wide). -->
       <div class="rail-block">
         <div class="rail-head">
           <div>
-            <h2>AI-generated ads</h2>
-            <p>Ads built with AI video, image and voice tools, then edited by hand for pace and polish.</p>
+            <h2>Widescreen cuts</h2>
+            <p>16:9 ads for feed placements, YouTube and landing pages.</p>
           </div>
           <div class="rail-controls">
-            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll AI-generated ads left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll AI-generated ads right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll Widescreen cuts left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll Widescreen cuts right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
           </div>
         </div>
         <!-- tabindex="0" lets keyboard users focus the row and scroll it with the arrow keys -->
-        <div class="rail" id="rail-ai" role="region" aria-label="AI-generated ads" tabindex="0">
+        <div class="rail" id="rail-cuts" role="region" aria-label="Widescreen cuts" tabindex="0">
           <!--
             HOW TO FILL A SLOT
             1. Put your video file in assets/videos/ (MP4, H.264).
@@ -179,88 +184,7 @@
             To add more slots, copy a whole <article class="slot ..."> block.
             To remove one, delete its block.
           -->
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">AI ad 1</h3>
-            <p class="slot__meta">Tools used, length</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">AI ad 2</h3>
-            <p class="slot__meta">Tools used, length</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">AI ad 3</h3>
-            <p class="slot__meta">Tools used, length</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">AI ad 4</h3>
-            <p class="slot__meta">Tools used, length</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">AI ad 5</h3>
-            <p class="slot__meta">Tools used, length</p>
-          </article>
-        </div>
-      </div>
-
-      <!-- RAIL 3: Alternate formats. Mix of 1:1 (slot--square) and 16:9 (slot--wide). -->
-      <div class="rail-block">
-        <div class="rail-head">
-          <div>
-            <h2>Square and widescreen cuts</h2>
-            <p>1:1 and 16:9 versions of the same ads for feed placements, YouTube and landing pages.</p>
-          </div>
-          <div class="rail-controls">
-            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll Square and widescreen cuts left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll Square and widescreen cuts right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-        <!-- tabindex="0" lets keyboard users focus the row and scroll it with the arrow keys -->
-        <div class="rail" id="rail-cuts" role="region" aria-label="Square and widescreen cuts" tabindex="0">
-          <!--
-            HOW TO FILL A SLOT
-            1. Put your video file in assets/videos/ (MP4, H.264).
-            2. Replace the <span class="slot__empty"> line with:
-                 <video src="assets/videos/my-ad.mp4" poster="assets/images/my-ad.jpg"
-                        muted loop playsinline preload="metadata"></video>
-               The site adds the rest by itself: the video previews on hover,
-               gets a sound button, and opens in a larger player when clicked.
-               Or embed YouTube / Vimeo / Google Drive instead (opens larger on
-               click, but has no hover preview or sound button):
-                 <iframe src="https://www.youtube.com/embed/VIDEO_ID"
-                         title="Ad title" allowfullscreen loading="lazy"></iframe>
-            3. Edit the title and the line under it.
-            To add more slots, copy a whole <article class="slot ..."> block.
-            To remove one, delete its block.
-          -->
-          <article class="slot slot--square">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">Square cut 1</h3>
-            <p class="slot__meta">Brand, length, platform</p>
-          </article>
-          <article class="slot slot--square">
-            <div class="slot__media">
-              <span class="slot__empty">Video coming soon</span>
-            </div>
-            <h3 class="slot__title">Square cut 2</h3>
-            <p class="slot__meta">Brand, length, platform</p>
-          </article>
+          
           <article class="slot slot--wide">
             <div class="slot__media">
               <span class="slot__empty">Video coming soon</span>
@@ -275,11 +199,18 @@
             <h3 class="slot__title">Widescreen cut 2</h3>
             <p class="slot__meta">Brand, length, platform</p>
           </article>
-          <article class="slot slot--square">
+          <article class="slot slot--wide">
             <div class="slot__media">
               <span class="slot__empty">Video coming soon</span>
             </div>
-            <h3 class="slot__title">Square cut 3</h3>
+            <h3 class="slot__title">Widescreen cut 1</h3>
+            <p class="slot__meta">Brand, length, platform</p>
+          </article>
+          <article class="slot slot--wide">
+            <div class="slot__media">
+              <span class="slot__empty">Video coming soon</span>
+            </div>
+            <h3 class="slot__title">Widescreen cut 2</h3>
             <p class="slot__meta">Brand, length, platform</p>
           </article>
         </div>
@@ -357,10 +288,11 @@
             <h3>Tools I use</h3>
             <!-- EDIT ME: keep only the tools you actually use, and add any that are missing. -->
             <ul class="tool-list">
-              <li>Gemini</li>
               <li>ChatGPT</li>
+              <li>Claude</li>
               <li>CapCut</li>
               <li>Premiere Pro</li>
+              <li>Google Flow</li>
               <li>ElevenLabs</li>
               <li>Runway</li>
             </ul>
