@@ -373,7 +373,9 @@
         if (video.duration) scrubBar.style.transform = 'scaleX(' + (video.currentTime / video.duration) + ')';
       });
       // Show a real frame instead of a black box before anything plays
-      video.addEventListener('loadedmetadata', () => { if (video.paused) video.currentTime = 0.1; });
+      // (skipped when the video has a poster, so the thumbnail stays visible)
+      const hasPoster = video.hasAttribute('poster');
+      video.addEventListener('loadedmetadata', () => { if (video.paused && !hasPoster) video.currentTime = 0.1; });
 
       const startPreview = () => {
         const attempt = video.play();
@@ -382,7 +384,8 @@
       };
       const stopPreview = () => {
         video.pause();
-        video.currentTime = 0.1;
+        if (hasPoster) video.load();   // resets the video so the poster shows again
+        else video.currentTime = 0.1;
         media.classList.remove('is-playing');
         scrubBar.style.transform = 'scaleX(0)';
       };
