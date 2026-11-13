@@ -154,21 +154,6 @@
             <svg class="spark spark--3" viewBox="0 0 24 24" width="16" height="16"><path d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0z" fill="#f1f2f8"/></svg>
           </div>
         </div>
-
-        <!-- SHOWREEL: your best work in one video (wide, 21:9 frame).
-             Fill it the same way as the slots below (see HOW TO FILL A SLOT). -->
-        <div class="hero__reel" data-reveal>
-          <article class="slot slot--cinema">
-            <div class="slot__media">
-              <span class="slot__empty">
-                <span class="slot__hud"><span class="rec"></span><span data-timecode>00:00:00:00</span></span>
-                Showreel coming soon
-              </span>
-            </div>
-            <h2 class="slot__title">Showreel</h2>
-            <p class="slot__meta">Best work, about 60 seconds</p>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -214,47 +199,11 @@
                Or embed YouTube / Vimeo / Google Drive instead (opens larger on
                click, but has no hover preview or sound button):
                  <iframe src="https://www.youtube.com/embed/VIDEO_ID"
-                         title="Ad title" allowfullscreen loading="lazy"></iframe>
+                         title="Ad title" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             3. Edit the title and the line under it.
             To add more slots, copy a whole <article class="slot ..."> block.
             To remove one, delete its block.
           -->
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <video src="assets\videos\munro_captioned.mp4"
-                     poster="assets/images/munro_thumbnail.png"
-                        muted loop playsinline preload="metadata"></video>
-            </div>
-            <h3 class="slot__title">He Was 68 on a 47-Year-Old Bike… and Nobody’s Beaten His Record</h3>
-            <p class="slot__meta">Animated Explainer Short, 1:04s, YouTube Shorts</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <video src="assets/videos/disteel_captioned.mp4"
-                     poster="assets/images/thumbnail_1080x1920 vincent.png"
-                        muted loop playsinline preload="metadata"></video>
-            </div>
-            <h3 class="slot__title">He Hid Every Vincent Motorcycle — and Nailed the Doors Shut</h3>
-            <p class="slot__meta">Animated Explainer Short, 1:16s, YouTube Shorts</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <video src="assets/videos/roadog_captioned.mp4"
-                     poster="assets/images/thumbnail_1080x1920 roadog.png"
-                        muted loop playsinline preload="metadata"></video>
-            </div>
-            <h3 class="slot__title">The 17-Foot Motorcycle That Vanished After Its Builder Died</h3>
-            <p class="slot__meta">Animated Explainer Short, 1:19s, YouTube Shorts</p>
-          </article>
-          <article class="slot slot--vertical">
-            <div class="slot__media">
-              <video src="assets/videos/phantomshort_captioned.mp4"
-                     poster="assets/images/thumbnail_shorts_1080x1920 phantom.png"
-                        muted loop playsinline preload="metadata"></video>
-            </div>
-            <h3 class="slot__title">The Serial Killer Who Never Existed</h3>
-            <p class="slot__meta">Animated Explainer Short, 1:12s, YouTube Shorts</p>
-          </article>
           <article class="slot slot--vertical">
             <div class="slot__media">
               <video src="assets/videos/Serene Herbs Soursop Sumo Wrestler.mp4"
@@ -299,12 +248,87 @@
         <div class="rail-progress" aria-hidden="true"><i></i></div>
       </div>
 
-
-      <!-- RAIL 2: 16:9 (slot--wide). -->
+      <!-- RAIL 2: Animated reels (vertical 9:16). -->
       <div class="rail-block">
         <div class="rail-head" data-reveal>
           <div>
-            <span class="eyebrow">02 — Widescreen</span>
+            <span class="eyebrow">02 — Vertical</span>
+            <h2>Animated Reels</h2>
+            <p>Animated story shorts for vertical feeds: narrated, captioned and built to hold attention to the end.</p>
+          </div>
+          <div class="rail-controls">
+            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll animated reels left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll animated reels right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <!-- tabindex="0" lets keyboard users focus the row and scroll it with the arrow keys -->
+        <div class="rail" id="rail-animated" role="region" aria-label="Animated reels" tabindex="0" data-reveal>
+          <!-- Fill these exactly like the UGC row above (see HOW TO FILL A SLOT). -->
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <iframe src="https://www.youtube.com/embed/PAtR29myooI"
+                      title="Australia Lost a War to Emus" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <h3 class="slot__title">Australia Lost a War to Emus</h3>
+            <p class="slot__meta">Animated Explainer Short, YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <iframe src="https://www.youtube.com/embed/gw7zNcvMg2c"
+                      title="Masamune vs Muramasa: The Sword Test That Never Happened" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <h3 class="slot__title">Masamune vs Muramasa: The Sword Test That Never Happened</h3>
+            <p class="slot__meta">Animated Explainer Short, YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <iframe src="https://www.youtube.com/embed/e4Ai6ujUFtk"
+                      title="He Fought WW2 for 29 Years After It Ended" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <h3 class="slot__title">He Fought WW2 for 29 Years After It Ended</h3>
+            <p class="slot__meta">Animated Explainer Short, YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <iframe src="https://www.youtube.com/embed/LdyeVCePR1I"
+                      title="He Was 68 on a 47-Year-Old Bike… and Nobody’s Beaten His Record" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <h3 class="slot__title">He Was 68 on a 47-Year-Old Bike… and Nobody’s Beaten His Record</h3>
+            <p class="slot__meta">Animated Explainer Short, 1:04s, YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <iframe src="https://www.youtube.com/embed/KHoJCqt_VW0"
+                      title="The 17-Foot Motorcycle That Vanished After Its Builder Died" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <h3 class="slot__title">The 17-Foot Motorcycle That Vanished After Its Builder Died</h3>
+            <p class="slot__meta">Animated Explainer Short, 1:19s, YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <iframe src="https://www.youtube.com/embed/HRLJcPno0OM"
+                      title="He Hid Every Vincent Motorcycle — and Nailed the Doors Shut" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <h3 class="slot__title">He Hid Every Vincent Motorcycle — and Nailed the Doors Shut</h3>
+            <p class="slot__meta">Animated Explainer Short, 1:16s, YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <iframe src="https://www.youtube.com/embed/YtjB7sNSbIo"
+                      title="The Serial Killer Who Never Existed" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <h3 class="slot__title">The Serial Killer Who Never Existed</h3>
+            <p class="slot__meta">Animated Explainer Short, 1:12s, YouTube Shorts</p>
+          </article>
+        </div>
+        <div class="rail-progress" aria-hidden="true"><i></i></div>
+      </div>
+
+      <!-- RAIL 3: 16:9 (slot--wide). -->
+      <div class="rail-block">
+        <div class="rail-head" data-reveal>
+          <div>
+            <span class="eyebrow">03 — Widescreen</span>
             <h2>Widescreen cuts</h2>
             <p>16:9 ads for feed placements, YouTube and landing pages.</p>
           </div>
@@ -431,9 +455,9 @@
               <li>CapCut</li>
               <li>Premiere Pro</li>
               <li>Google Flow</li>
+              <li>Higgsfield</li>
               <li>Remotion</li>
               <li>ElevenLabs</li>
-              <li>Runway</li>
             </ul>
             <p>
               I've built backend that routes requests between Gemini and

@@ -315,6 +315,7 @@
       frame.title = iframe.title || title;
       frame.allow = 'autoplay; fullscreen; picture-in-picture';
       frame.allowFullscreen = true;
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';  // YouTube needs this (error 153 without it)
       lightboxMedia.append(frame);
     } else {
       const image = $('img', media);
