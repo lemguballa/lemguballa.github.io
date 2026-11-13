@@ -412,16 +412,31 @@
       media.append(sound);
     }
 
+    // Hover state for the glow and border (a class is cheaper than :hover inside :has)
+    if (canHover && slot) {
+      media.addEventListener('pointerenter', () => slot.classList.add('is-hover'));
+      media.addEventListener('pointerleave', () => slot.classList.remove('is-hover'));
+    }
+
     // Slots tilt a little toward the mouse
     if (canHover && !reduceMotion) {
       const strength = slot && slot.classList.contains('slot--cinema') ? 2.5 : 7;
+      // Update the tilt at most once per frame, however fast the mouse sends events
+      let tiltX = 0, tiltY = 0, tiltQueued = false;
       media.addEventListener('pointermove', (e) => {
         if (paused) return;
-        const box = media.getBoundingClientRect();
-        const px = (e.clientX - box.left) / box.width - 0.5;
-        const py = (e.clientY - box.top) / box.height - 0.5;
-        media.style.setProperty('--ry', (px * strength).toFixed(2) + 'deg');
-        media.style.setProperty('--rx', (-py * strength).toFixed(2) + 'deg');
+        tiltX = e.clientX;
+        tiltY = e.clientY;
+        if (tiltQueued) return;
+        tiltQueued = true;
+        requestAnimationFrame(() => {
+          tiltQueued = false;
+          const box = media.getBoundingClientRect();
+          const px = (tiltX - box.left) / box.width - 0.5;
+          const py = (tiltY - box.top) / box.height - 0.5;
+          media.style.setProperty('--ry', (px * strength).toFixed(2) + 'deg');
+          media.style.setProperty('--rx', (-py * strength).toFixed(2) + 'deg');
+        });
       });
       media.addEventListener('pointerleave', () => {
         media.style.setProperty('--rx', '0deg');

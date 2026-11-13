@@ -304,19 +304,22 @@ a { color: inherit; }
 .cursor span {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  margin: -17px 0 0 -17px;
-  border: 1.5px solid var(--playhead);
+  /* Drawn at full PLAY size (84px) and scaled down, so growing it is a
+     cheap transform instead of a layout change on every frame. */
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border: 3.7px solid var(--playhead);  /* about 1.5px once scaled down */
   border-radius: 50%;
   color: var(--ink);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
-  transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), margin 0.3s var(--ease-out), background-color 0.2s;
+  transform: scale(0.405);  /* 34px */
+  transition: transform 0.3s var(--ease-out), background-color 0.2s;
 }
-.cursor.is-link span { width: 54px; height: 54px; margin: -27px 0 0 -27px; background: rgba(255, 77, 141, 0.15); }
-.cursor.is-play span { width: 84px; height: 84px; margin: -42px 0 0 -42px; background: var(--playhead); }
+.cursor.is-link span { transform: scale(0.643); background: rgba(255, 77, 141, 0.15); }  /* 54px */
+.cursor.is-play span { transform: scale(1); background: var(--playhead); }  /* 84px */
 .cursor.is-play span::after { content: "PLAY"; }
 
 
@@ -887,11 +890,31 @@ a { color: inherit; }
 
 /* One video slot. Its width comes from the --slot-w variable below. */
 .slot {
+  position: relative;
   flex: 0 0 auto;
   width: var(--slot-w);
   scroll-snap-align: start;
   counter-increment: slot;
 }
+
+/* Pink glow behind a filled slot on hover. The shadow is drawn once and only
+   its opacity fades, which every browser (Firefox included) can do cheaply.
+   JS toggles .is-hover on the slot. */
+.slot::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: var(--slot-ratio, 16 / 9);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(255, 77, 141, 0.22);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.slot.is-hover::before { opacity: 1; }
+.slot--cinema::before { border-radius: 18px; box-shadow: 0 30px 80px rgba(255, 77, 141, 0.25); }
 
 /* Slot shapes. Add one of these classes to the <article class="slot"> */
 .slot--vertical { --slot-w: clamp(200px, 23vw, 260px); }  /* 9:16 TikTok, Reels, Shorts */
@@ -911,11 +934,18 @@ a { color: inherit; }
   border-radius: 14px;
   background: var(--panel);
   transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transition: transform 0.4s var(--ease-out), box-shadow 0.4s, border-color 0.3s;
+  transition: transform 0.4s var(--ease-out), border-color 0.3s;
 }
+/* While hovered, keep the tilting card on its own GPU layer so tilting
+   doesn't repaint the video and rounded corners every frame. */
+.slot.is-hover .slot__media { will-change: transform; }
+.slot--vertical { --slot-ratio: 9 / 16; }
 .slot--vertical .slot__media { aspect-ratio: 9 / 16; }
+.slot--square   { --slot-ratio: 1 / 1; }
 .slot--square   .slot__media { aspect-ratio: 1 / 1; }
+.slot--wide     { --slot-ratio: 16 / 9; }
 .slot--wide     .slot__media { aspect-ratio: 16 / 9; }
+.slot--cinema   { --slot-ratio: var(--cinema-ratio); }
 .slot--cinema   .slot__media {
   aspect-ratio: var(--cinema-ratio);
   border-radius: 18px;
@@ -1012,11 +1042,7 @@ a { color: inherit; }
   border-color: transparent;
 }
 .slot__media:has(video, iframe, img) .slot__empty { display: none; }
-.slot__media:has(video, iframe, img):hover {
-  border-color: rgba(255, 77, 141, 0.7);
-  box-shadow: 0 24px 60px rgba(255, 77, 141, 0.22);
-}
-.slot--cinema .slot__media:has(video, iframe, img):hover { box-shadow: 0 30px 80px rgba(255, 77, 141, 0.25); }
+.slot.is-hover .slot__media:has(video, iframe, img) { border-color: rgba(255, 77, 141, 0.7); }
 
 /* Invisible button laid over a filled slot. Clicking it (or pressing Enter)
    opens the larger player. JS adds it. */
