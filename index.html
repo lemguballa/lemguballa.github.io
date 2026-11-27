@@ -178,16 +178,16 @@
         <div class="rail-head" data-reveal>
           <div>
             <span class="eyebrow">01 — Vertical</span>
-            <h2>UGC Ads</h2>
-            <p>Creator-style videos cut for vertical feeds: a hook, proof, and a clear call to action.</p>
+            <h2>UGC &amp; AI Ads</h2>
+            <p>Creator-style and AI-generated videos cut for vertical feeds: a hook, proof, and a clear call to action.</p>
           </div>
           <div class="rail-controls">
-            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll UGC ads left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll UGC ads right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            <button class="rail-btn" type="button" data-rail-prev aria-label="Scroll UGC and AI ads left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="rail-btn" type="button" data-rail-next aria-label="Scroll UGC and AI ads right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
           </div>
         </div>
         <!-- tabindex="0" lets keyboard users focus the row and scroll it with the arrow keys -->
-        <div class="rail" id="rail-ugc" role="region" aria-label="UGC ads" tabindex="0" data-reveal>
+        <div class="rail" id="rail-ugc" role="region" aria-label="UGC and AI ads" tabindex="0" data-reveal>
           <!--
             HOW TO FILL A SLOT
             1. Put your video file in assets/videos/ (MP4, H.264).
@@ -204,6 +204,30 @@
             To add more slots, copy a whole <article class="slot ..."> block.
             To remove one, delete its block.
           -->
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <video src="assets/videos/claritymd_drama_hook1.mp4"
+                        muted loop playsinline preload="metadata"></video>
+            </div>
+            <h3 class="slot__title">ClarityMD AI Drama Ad</h3>
+            <p class="slot__meta">AI Drama Ad, 0:55s, made for Meta Ads</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <video src="assets/videos/BRYN interrogation H2 v1.mp4"
+                        muted loop playsinline preload="metadata"></video>
+            </div>
+            <h3 class="slot__title">BRYN Interrogation Ad</h3>
+            <p class="slot__meta">UGC Ad, 1:08s, made for TikTok, Instagram Reels, and YouTube Shorts</p>
+          </article>
+          <article class="slot slot--vertical">
+            <div class="slot__media">
+              <video src="assets/videos/BRYN Hook 1 9x16 v3.mp4"
+                        muted loop playsinline preload="metadata"></video>
+            </div>
+            <h3 class="slot__title">BRYN Lego Ad</h3>
+            <p class="slot__meta">UGC Ad, 0:53s, made for TikTok, Instagram Reels, and YouTube Shorts</p>
+          </article>
           <article class="slot slot--vertical">
             <div class="slot__media">
               <video src="assets/videos/Serene Herbs Soursop Sumo Wrestler.mp4"
